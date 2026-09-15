@@ -451,7 +451,7 @@ if (checkoutForm) {
         submitBtn.innerText = "جاري إرسال الطلب...";
         submitBtn.disabled = true;
 
-       emailjs.send("service_ak9x10p", "template_frbxkcq", templateParams, "hZOtizBjJy0CcBmN")
+       emailjs.send("service_ak9x10p", "template_frbxkcq", templateParams, "hZOtizjBJy0CczBmn")
             .then((response) => {
                 alert("🎉 تم إرسال طلبك بنجاح! سنتواصل معك قريباً لتأكيد الشحن.");
                 cart = [];
