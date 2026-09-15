@@ -1487,7 +1487,8 @@ function displayCategorizedSections() {
         smartPhonesContainer.innerHTML = "";
         const phones = products.filter(p => p.category === "الأجهزة الذكية");
         phones.forEach(product => {
-            smartPhonesContainer.appendChild(createProductCard(product));
+                    smartPhonesContainer.appendChild(createProductCard(product));
+
         });
     }
 
