@@ -1,423 +1,622 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>متجر العطاوي - Alatawi</title>
-    <!-- مكتبة الأيقونات FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
 
-        body {
-            background-color: #f3f0f7;
-            color: #1e293b;
-            padding-bottom: 70px; /* مساحة للشريط السفلي */
-        }
+    <title>العطاوي للاتصالات</title>
 
-        /* الهيدر العلوي */
-        header {
-            background-color: #ffffff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-left, .header-right {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .header-left i, .header-right i {
-            font-size: 20px;
-            color: #4a154b;
-            cursor: pointer;
-        }
-
-        .logo-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .logo-container img {
-            height: 35px;
-            object-fit: contain;
-        }
-
-        /* سلايدر البنرات الإعلانية */
-        .banner-slider {
-            width: 100%;
-            padding: 10px 15px;
-        }
-
-        .banner-slide {
-            width: 100%;
-            height: 180px;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .banner-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* قسم التصنيفات الدائرية */
-        .categories-section {
-            padding: 15px;
-            background: #fff;
-            margin: 10px 0;
-        }
-
-        .section-title {
-            font-size: 16px;
-            font-weight: bold;
-            color: #1e293b;
-            margin-bottom: 12px;
-            text-align: right;
-        }
-
-        .categories-grid {
-            display: flex;
-            gap: 15px;
-            overflow-x: auto;
-            padding-bottom: 5px;
-            scrollbar-width: none;
-        }
-
-        .categories-grid::-webkit-scrollbar {
-            display: none;
-        }
-
-        .category-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-width: 70px;
-            cursor: pointer;
-        }
-
-        .category-circle {
-            width: 60px;
-            height: 60px;
-            background: #4a154b;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            font-size: 22px;
-            box-shadow: 0 4px 8px rgba(74, 21, 75, 0.2);
-            margin-bottom: 5px;
-        }
-
-        .category-item span {
-            font-size: 12px;
-            text-align: center;
-            color: #333;
-        }
-
-        /* قسم المنتجات (الحاوية البنفسجية) */
-        .products-section {
-            background-color: #4a154b;
-            border-radius: 24px 24px 0 0;
-            margin-top: 15px;
-            padding: 20px 15px;
-        }
-
-        .products-header {
-            text-align: center;
-            color: #fff;
-            margin-bottom: 15px;
-        }
-
-        .products-header h2 {
-            font-size: 18px;
-            margin-bottom: 5px;
-        }
-
-        .products-header p {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        /* شبكة المنتجات */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        .product-card {
-            background: #fff;
-            border-radius: 16px;
-            padding: 12px;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        .product-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #e11d48;
-            color: #fff;
-            font-size: 10px;
-            padding: 2px 6px;
-            border-radius: 6px;
-            font-weight: bold;
-        }
-
-        .product-rating {
-            display: flex;
-            align-items: center;
-            gap: 3px;
-            font-size: 12px;
-            color: #f59e0b;
-            margin-bottom: 8px;
-        }
-
-        .product-img {
-            width: 100%;
-            height: 110px;
-            object-fit: contain;
-            margin-bottom: 10px;
-        }
-
-        .product-title {
-            font-size: 13px;
-            color: #333;
-            margin-bottom: 8px;
-            height: 35px;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-        }
-
-        .product-prices {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 10px;
-        }
-
-        .old-price {
-            font-size: 11px;
-            color: #94a3b8;
-            text-decoration: line-through;
-        }
-
-        .new-price {
-            font-size: 14px;
-            font-weight: bold;
-            color: #4a154b;
-        }
-
-        .add-to-cart-btn {
-            background-color: #8b5cf6;
-            color: #fff;
-            border: none;
-            padding: 8px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 5px;
-            transition: background 0.2s;
-        }
-
-        .add-to-cart-btn:hover {
-            background-color: #7c3aed;
-        }
-
-        /* شريط التنقل السفلي الثابت */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: #fff;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            height: 60px;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
-            z-index: 1000;
-        }
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #64748b;
-            text-decoration: none;
-            font-size: 10px;
-            position: relative;
-        }
-
-        .nav-item i {
-            font-size: 18px;
-            margin-bottom: 3px;
-        }
-
-        .nav-item.active {
-            color: #4a154b;
-        }
-
-        .cart-badge-count {
-            position: absolute;
-            top: -3px;
-            right: 5px;
-            background: #e11d48;
-            color: #fff;
-            font-size: 9px;
-            padding: 1px 4px;
-            border-radius: 50%;
-        }
-    </style>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <!-- الهيدر العلوي -->
-    <header>
-        <div class="header-left">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <i class="fa-solid fa-globe"></i>
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="container top-bar-content">
+
+                <span>🚚 شحن سريع وآمن</span>
+
+                <span>📞 خدمة العملاء</span>
+
+                <span>💳 طرق دفع متعددة</span>
+
+            </div>
         </div>
-        <div class="logo-container">
-            <!-- الشعار النصي والأيقوني مطابق للصور -->
-            <h2 style="color: #4a154b; font-size: 18px; font-weight: bold;">العطاوي</h2>
-            <span style="font-size: 9px; color: #666; letter-spacing: 1px;">ALATAWI</span>
+
+
+        <!-- Main Header -->
+        <div class="main-header">
+
+            <div class="container header-content">
+
+                <!-- Logo -->
+                <a href="#" class="logo">
+                    <span>العطاوي</span>
+                    <small>للاتصالات</small>
+                </a>
+
+
+                <!-- Search -->
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="ابحث عن منتج..."
+                    >
+
+                    <button id="searchButton">
+                        🔍
+                    </button>
+
+                </div>
+
+
+                <!-- Account -->
+                <button class="header-button" id="accountButton">
+
+                    👤
+
+                    <span>
+                        حسابي
+                    </span>
+
+                </button>
+
+
+                <!-- Cart -->
+                <button class="header-button cart-button" id="cartButton">
+
+                    🛒
+
+                    <span>
+                        السلة
+                    </span>
+
+                    <b id="cartCount">0</b>
+
+                </button>
+
+            </div>
+
         </div>
-        <div class="header-right">
-            <i class="fa-solid fa-bars"></i>
-        </div>
+
+
+        <!-- Navigation -->
+
+        <nav class="navigation">
+
+            <div class="container navigation-content">
+
+                <a href="#" data-category="all">
+                    الرئيسية
+                </a>
+
+                <a href="#" data-category="all">
+                    جميع المنتجات
+                </a>
+
+                <a href="#" data-category="الأجهزة الذكية">
+                    الأجهزة الذكية
+                </a>
+
+                <a href="#" data-category="الكفرات">
+                    الكفرات
+                </a>
+
+                <a href="#" data-category="الصوتيات">
+                    الصوتيات
+                </a>
+
+                <a href="#" data-category="الشواحن والكيابل">
+                    الشواحن والكيابل
+                </a>
+
+                <a href="#" data-category="الساعات الذكية">
+                    الساعات الذكية
+                </a>
+
+                <a href="#" data-category="ملحقات السيارة">
+                    ملحقات السيارة
+                </a>
+
+                <a href="#" data-category="عروض">
+                    🔥 العروض
+                </a>
+
+            </div>
+
+        </nav>
+
     </header>
 
-    <!-- اللوحة الإعلانية المتحركة (البانر) -->
-    <div class="banner-slider">
-        <div class="banner-slide">
-            <!-- استبدل الرابط برابط صورة بانر العروض الحقيقي لديك -->
-            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80" alt="عروض آيفون">
-        </div>
-    </div>
 
-    <!-- قسم التصنيفات الدائرية -->
-    <div class="categories-section">
-        <div class="section-title">التصنيفات</div>
-        <div class="categories-grid">
-            <div class="category-item">
-                <div class="category-circle"><i class="fa-solid fa-mobile-screen"></i></div>
-                <span>الكفرات</span>
-            </div>
-            <div class="category-item">
-                <div class="category-circle"><i class="fa-solid fa-shield-halved"></i></div>
-                <span>بكجات وحمايات</span>
-            </div>
-            <div class="category-item">
-                <div class="category-circle"><i class="fa-solid fa-gamepad"></i></div>
-                <span>منتجات إكس ولف</span>
-            </div>
-            <div class="category-item">
-                <div class="category-circle"><i class="fa-solid fa-laptop"></i></div>
-                <span>الأجهزة الذكية</span>
-            </div>
-            <div class="category-item">
-                <div class="category-circle"><i class="fa-solid fa-percent"></i></div>
-                <span>عروض الأجهزة</span>
-            </div>
-        </div>
-    </div>
+    <!-- ================= MAIN ================= -->
 
-    <!-- قسم المنتجات المخفضة (الخلفية البنفسجية) -->
-    <div class="products-section">
-        <div class="products-header">
-            <h2>عروض تبدأ من ٣ ريال</h2>
-            <p>أحدث المنتجات المخفضة</p>
-        </div>
+    <main>
 
-        <div class="products-grid">
-            <!-- المنتج الأول -->
-            <div class="product-card">
-                <span class="product-badge">خصم 98%</span>
-                <div class="product-rating">
-                    <i class="fa-solid fa-star"></i>
-                    <span style="color: #333; font-weight: bold;">5.0</span>
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="container hero-content">
+
+                <div class="hero-text">
+
+                    <span class="hero-label">
+                        متجر العطاوي للاتصالات
+                    </span>
+
+                    <h1>
+                        كل احتياجاتك التقنية
+                        <br>
+                        في مكان واحد
+                    </h1>
+
+                    <p>
+                        أجهزة جوال، إكسسوارات، سماعات،
+                        شواحن وملحقات بأفضل الأسعار.
+                    </p>
+
+                    <button class="primary-button" id="shopButton">
+                        تسوق الآن
+                    </button>
+
                 </div>
-                <img src="https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?auto=format&fit=crop&w=300&q=80" alt="منتج" class="product-img">
-                <div class="product-title">حامى كاميرا مع اطار معدني مضاد للصدمات</div>
-                <div class="product-prices">
-                    <span class="old-price">49.00 ريال</span>
-                    <span class="new-price">1.00 ريال</span>
+
+
+                <div class="hero-image">
+
+                    📱
+
+                    <div>
+                        🎧
+                        ⌚
+                    </div>
+
                 </div>
-                <button class="add-to-cart-btn">
-                    <i class="fa-solid fa-cart-shopping"></i> أضف للسلة
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= CATEGORIES ================= -->
+
+        <section class="section">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <span class="section-small-title">
+                            اكتشف منتجاتنا
+                        </span>
+
+                        <h2>
+                            التصنيفات
+                        </h2>
+
+                    </div>
+
+                    <button
+                        class="view-all"
+                        data-category="all"
+                    >
+                        عرض الكل
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="categories"
+                    id="categoriesContainer"
+                >
+
+                    <!-- JavaScript will add categories -->
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= OFFERS ================= -->
+
+        <section class="section offers-section">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <span class="section-small-title">
+                            لا تفوت الفرصة
+                        </span>
+
+                        <h2>
+                            🔥 عروض مميزة
+                        </h2>
+
+                    </div>
+
+                    <button
+                        class="view-all"
+                        data-category="عروض"
+                    >
+                        عرض الكل
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="products-grid"
+                    id="offersContainer"
+                >
+
+                    <!-- JavaScript -->
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= PRODUCTS ================= -->
+
+        <section
+            class="section"
+            id="productsSection"
+        >
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <span class="section-small-title">
+                            تسوق الآن
+                        </span>
+
+                        <h2>
+                            منتجاتنا
+                        </h2>
+
+                    </div>
+
+
+                    <select id="sortProducts">
+
+                        <option value="default">
+                            الترتيب الافتراضي
+                        </option>
+
+                        <option value="low">
+                            السعر: من الأقل للأعلى
+                        </option>
+
+                        <option value="high">
+                            السعر: من الأعلى للأقل
+                        </option>
+
+                        <option value="discount">
+                            أعلى الخصومات
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Products -->
+
+                <div
+                    class="products-grid"
+                    id="productsContainer"
+                >
+
+                    <!-- JavaScript will add products -->
+
+                </div>
+
+
+                <!-- No Products -->
+
+                <div
+                    class="no-products"
+                    id="noProducts"
+                    style="display:none;"
+                >
+
+                    <div>
+                        🔍
+                    </div>
+
+                    <h3>
+                        لم نجد أي منتجات
+                    </h3>
+
+                    <p>
+                        جرّب البحث بكلمة أخرى.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ================= CART ================= -->
+
+    <div
+        class="overlay"
+        id="cartOverlay"
+    >
+
+        <div class="side-panel cart-panel">
+
+            <div class="panel-header">
+
+                <h2>
+                    🛒 سلة المشتريات
+                </h2>
+
+                <button
+                    class="close-button"
+                    id="closeCart"
+                >
+                    ×
                 </button>
+
             </div>
 
-            <!-- المنتج الثاني -->
-            <div class="product-card">
-                <span class="product-badge">خصم 97%</span>
-                <div class="product-rating">
-                    <i class="fa-solid fa-star"></i>
-                    <span style="color: #333; font-weight: bold;">5.0</span>
-                </div>
-                <img src="https://images.unsplash.com/photo-1601593346740-92561577e394?auto=format&fit=crop&w=300&q=80" alt="منتج" class="product-img">
-                <div class="product-title">كفر الجوهرة - باستاند حماية فاخر</div>
-                <div class="product-prices">
-                    <span class="old-price">59.00 ريال</span>
-                    <span class="new-price">1.96 ريال</span>
-                </div>
-                <button class="add-to-cart-btn">
-                    <i class="fa-solid fa-cart-shopping"></i> أضف للسلة
-                </button>
+
+            <div
+                class="cart-items"
+                id="cartItems"
+            >
+
+                <!-- JavaScript -->
+
             </div>
+
+
+            <div class="cart-footer">
+
+                <div class="cart-total">
+
+                    <span>
+                        الإجمالي
+                    </span>
+
+                    <strong id="cartTotal">
+                        0.00 ر.س
+                    </strong>
+
+                </div>
+
+
+                <button
+                    class="checkout-button"
+                    id="checkoutButton"
+                >
+                    إتمام الطلب
+                </button>
+
+            </div>
+
         </div>
+
     </div>
 
-    <!-- شريط التنقل السفلي الثابت -->
-    <nav class="bottom-nav">
-        <a href="#" class="nav-item">
-            <i class="fa-regular fa-user"></i>
-            <span>حسابي</span>
-        </a>
-        <a href="#" class="nav-item">
-            <i class="fa-regular fa-heart"></i>
-            <span>المفضلة</span>
-        </a>
-        <a href="#" class="nav-item">
-            <i class="fa-solid fa-bag-shopping"></i>
-            <span class="cart-badge-count">1</span>
-            <span>السلة</span>
-        </a>
-        <a href="#" class="nav-item">
-            <i class="fa-solid fa-border-all"></i>
-            <span>التصنيفات</span>
-        </a>
-        <a href="#" class="nav-item active">
-            <i class="fa-solid fa-house"></i>
-            <span>الرئيسية</span>
-        </a>
-    </nav>
+
+
+    <!-- ================= ACCOUNT ================= -->
+
+    <div
+        class="overlay"
+        id="accountOverlay"
+    >
+
+        <div class="account-modal">
+
+            <button
+                class="close-button"
+                id="closeAccount"
+            >
+                ×
+            </button>
+
+
+            <div class="account-icon">
+                👤
+            </div>
+
+
+            <h2>
+                تسجيل الدخول
+            </h2>
+
+            <p>
+                سجّل الدخول للوصول إلى حسابك وطلباتك.
+            </p>
+
+
+            <form id="loginForm">
+
+                <label>
+                    البريد الإلكتروني
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="example@email.com"
+                    required
+                >
+
+
+                <label>
+                    كلمة المرور
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="كلمة المرور"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="primary-button full-width"
+                >
+                    تسجيل الدخول
+                </button>
+
+            </form>
+
+
+            <div class="account-divider">
+                أو
+            </div>
+
+
+            <button
+                class="secondary-button full-width"
+                id="registerButton"
+            >
+                إنشاء حساب جديد
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="container footer-grid">
+
+
+            <div>
+
+                <div class="footer-logo">
+                    العطاوي
+                </div>
+
+                <p>
+                    متجر متخصص في الأجهزة الذكية
+                    والإكسسوارات والمنتجات التقنية.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    روابط مهمة
+                </h3>
+
+                <a href="#">
+                    من نحن
+                </a>
+
+                <a href="#">
+                    سياسة الخصوصية
+                </a>
+
+                <a href="#">
+                    الشروط والأحكام
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    خدمة العملاء
+                </h3>
+
+                <a href="#">
+                    الشحن والتوصيل
+                </a>
+
+                <a href="#">
+                    الاستبدال والاسترجاع
+                </a>
+
+                <a href="#">
+                    تواصل معنا
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    طرق الدفع
+                </h3>
+
+                <div class="payment-methods">
+
+                    <span>💳</span>
+                    <span>💵</span>
+                    <span>📱</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            جميع الحقوق محفوظة © 2026
+            العطاوي للاتصالات
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- JavaScript -->
+
+    <script src="app.js"></script>
 
 </body>
+
 </html>
