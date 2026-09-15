@@ -455,3 +455,70 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+/* =====================================================
+   EMAILJS CHECKOUT SUBMISSION INTEGRATION
+===================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+    const submitOrderButton = document.getElementById("submitOrderButton");
+    
+    if (submitOrderButton) {
+        submitOrderButton.addEventListener("click", () => {
+            const name = document.getElementById("checkoutName") ? document.getElementById("checkoutName").value.trim() : "";
+            const phone = document.getElementById("checkoutPhone") ? document.getElementById("checkoutPhone").value.trim() : "";
+            const address = document.getElementById("checkoutAddress") ? document.getElementById("checkoutAddress").value.trim() : "";
+            const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked') ? document.querySelector('input[name="paymentMethod"]:checked').value : "الدفع عند الاستلام";
+
+            // التحقق من تعبئة الحقول الأساسية
+            if (!name || !phone || !address) {
+                alert("الرجاء تعبئة الاسم، رقم الواتساب، وعنوان الاستلام لإتمام الطلب.");
+                return;
+            }
+
+            // جلب محتويات السلة والإجمالي (بالاعتماد على المتغيرات الموجودة في مشروعك الأصلي)
+            let cartDetails = "";
+            let totalAmount = document.getElementById("checkoutFinalTotal") ? document.getElementById("checkoutFinalTotal").innerText : "0.00";
+            
+            if (typeof cart !== "undefined" && cart.length > 0) {
+                cartDetails = cart.map(item => `- ${item.name} (الكمية: ${item.quantity}, السعر: ${item.price})`).join("\n");
+            } else {
+                cartDetails = "طلب من متجر العطاوي للاتصالات";
+            }
+
+            // بيانات الإرسال عبر EmailJS
+            const templateParams = {
+                to_name: "إبراهيم",
+                customer_name: name,
+                customer_phone: phone,
+                customer_address: address,
+                payment_method: paymentMethod,
+                cart_items: cartDetails,
+                total_price: totalAmount
+            };
+
+            // رسالة تحميل مؤقتة
+            submitOrderButton.innerText = "جاري إرسال الطلب...";
+            submitOrderButton.disabled = true;
+
+            // استخدام مكتبة emailjs للإرسال (تأكد من معرف الخدمة والقالب لديك)
+            // يمكنك تعديل service_id و template_id بما يناسب حسابك إذا لزم الأمر
+            emailjs.send("service_default", "template_default", templateParams)
+                .then((response) => {
+                    alert("تم إرسال طلبك بنجاح! سنتواصل معك قريباً.");
+                    document.getElementById("checkoutOverlay").classList.remove("active");
+                    submitOrderButton.innerText = "🚀 إرسال الطلب الآن";
+                    submitOrderButton.disabled = false;
+                    
+                    // تفريغ السلة إن أردت
+                    if (typeof cart !== "undefined") {
+                        cart.length = 0;
+                        if (typeof updateCart === "function") updateCart();
+                    }
+                }, (error) => {
+                    // في حال حدث خطأ بالإرسال البريدي، كبديل احتياطي نطبع التفاصيل أو نبه المستخدم
+                    alert("حدث خطأ أثناء إرسال الطلب عبر البريد، يرجى المحاولة مرة أخرى.");
+                    submitOrderButton.innerText = "🚀 إرسال الطلب الآن";
+                    submitOrderButton.disabled = false;
+                });
+        });
+    }
+});
