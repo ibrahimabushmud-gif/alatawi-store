@@ -1270,23 +1270,37 @@ function toggleFavorite(productId) {
 ===================================================== */
 
 function checkout() {
-
     if (cart.length === 0) {
-
-        alert(
-            "السلة فارغة، أضف منتجاً أولاً."
-        );
-
+        alert("السلة فارغة، أضف منتجات أولاً!");
         return;
-
     }
 
+    // تجهيز تفاصيل المنتجات والأسعار
+    let orderDetails = cart.map(item => `- ${item.name} (الكمية: ${item.quantity}) - السعر: ${item.price * item.quantity} ر.س`).join("\n");
+    let totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-    alert(
-        "صفحة الدفع سيتم ربطها في المرحلة القادمة."
-    );
+    // المتغيرات التي سترسلها إلى قالب EmailJS
+    let templateParams = {
+        to_name: "إبراهيم",
+        order_details: orderDetails,
+        total_price: totalAmount + " ر.س",
+        customer_email: "ibrahimabushmud@gmail.com"
+    };
 
+    // إرسال الإيميل عبر EmailJS باستخدام الـ Service ID والـ Template ID الخاص بك
+    emailjs.send('service_ak9x10p', 'template_frbxkcq', templateParams)
+        .then(function(response) {
+            alert("✨ تم إرسال طلبك بنجاح إلى متجر العطاوي! سيتم التواصل معك قريباً.");
+            cart = []; // تفريغ السلة بعد الطلب الناجح
+            saveCart();
+            updateCart();
+            closeCart(); // إغلاق لوحة السلة
+        }, function(error) {
+            alert("حدث خطأ أثناء إرسال الطلب، يرجى المحاولة مرة أخرى.");
+            console.log('FAILED...', error);
+        });
 }
+
 
 
 
