@@ -422,3 +422,36 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+/* =====================================================
+   FIX: CHECKOUT & ACCOUNT MODALS INTEGRATION
+===================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+    const checkoutButton = document.getElementById("checkoutButton");
+    const closeCheckout = document.getElementById("closeCheckout");
+    const checkoutOverlay = document.getElementById("checkoutOverlay");
+    const cartOverlay = document.getElementById("cartOverlay");
+
+    // فتح نافذة إتمام الطلب عند النقر على "إتمام الطلب" في السلة
+    if (checkoutButton && checkoutOverlay) {
+        checkoutButton.addEventListener("click", () => {
+            if (cartOverlay) cartOverlay.classList.remove("active");
+            checkoutOverlay.classList.add("active");
+        });
+    }
+
+    // إغلاق نافذة إتمام الطلب
+    if (closeCheckout && checkoutOverlay) {
+        closeCheckout.addEventListener("click", () => {
+            checkoutOverlay.classList.remove("active");
+        });
+    }
+
+    // إغلاق النافذة عند النقر خارجها على الخلفية الرمادية
+    if (checkoutOverlay) {
+        checkoutOverlay.addEventListener("click", (e) => {
+            if (e.target === checkoutOverlay) {
+                checkoutOverlay.classList.remove("active");
+            }
+        });
+    }
+});
