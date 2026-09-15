@@ -1481,33 +1481,34 @@ document
 /* =====================================================
    START STORE
 ===================================================== */
-function displayCategorizedSections() {
-    if (smartPhonesContainer) {
-        smartPhonesContainer.innerHTML = "";
-        // عرض أول قسمين من المنتجات
+document.addEventListener("DOMContentLoaded", function() {
+    const sContainer = document.getElementById('smartPhonesContainer');
+    const aContainer = document.getElementById('accessoriesContainer');
+    const cContainer = document.getElementById('carTechContainer');
+
+    if (sContainer) {
+        sContainer.innerHTML = "";
         products.slice(0, 3).forEach(product => {
-            smartPhonesContainer.appendChild(createProductCard(product));
+            sContainer.appendChild(createProductCard(product));
         });
     }
 
-    if (accessoriesContainer) {
-        accessoriesContainer.innerHTML = "";
-        // عرض المنتجات الوسطى
+    if (aContainer) {
+        aContainer.innerHTML = "";
         products.slice(3, 6).forEach(product => {
-            accessoriesContainer.appendChild(createProductCard(product));
+            aContainer.appendChild(createProductCard(product));
         });
     }
 
-    if (carTechContainer) {
-        carTechContainer.innerHTML = "";
-        // عرض باقي المنتجات
+    if (cContainer) {
+        cContainer.innerHTML = "";
         products.slice(6).forEach(product => {
-            carTechContainer.appendChild(createProductCard(product));
+            cContainer.appendChild(createProductCard(product));
         });
     }
-}
+});
 
-displayCategorizedSections();
+// تشغيل باقي الوظائف
 displayOffers();
 updateCart();
 setupNavigation();
