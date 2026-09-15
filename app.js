@@ -435,20 +435,22 @@ if (checkoutForm) {
         let orderDetails = cart.map(item => `- ${item.name} (الكمية: ${item.quantity}) - السعر: ${item.price * item.quantity} ر.س`).join("\n");
         let totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
+   
         const templateParams = {
-            to_name: "مدير المتجر (العطاوي)",
-            client_name: name,
+            to_email: "ibrahim@gmail.com", 
+            name: name,
+            client_email: phone, 
             client_phone: phone,
             client_address: address,
             order_items: orderDetails,
-            total_amount: totalPrice + " ر.س"
+            total_amount: totalPrice + " ر.س",
+            message: `بيانات العميل:\nالاسم: ${name}\nالهاتف: ${phone}\nالعنوان: ${address}\n\nالطلبات:\n${orderDetails}\n\nالإجمالي: ${totalPrice} ر.س`
         };
 
         const submitBtn = checkoutForm.querySelector("button[type='submit']");
         submitBtn.innerText = "جاري إرسال الطلب...";
         submitBtn.disabled = true;
 
-        // تم تصحيح مفتاح EmailJS هنا ليتطابق تماماً مع المفتاح الصحيح
         emailjs.send("service_ak9x10p", "template_frbxkcq", templateParams, "hZOtizBjJy0CcBmN")
             .then((response) => {
                 alert("🎉 تم إرسال طلبك بنجاح! سنتواصل معك قريباً لتأكيد الشحن.");
@@ -460,6 +462,7 @@ if (checkoutForm) {
                 submitBtn.innerText = "تأكيد وإرسال الطلب عبر البريد";
                 submitBtn.disabled = false;
             }, (error) => {
+                console.error("EmailJS Error details:", error);
                 alert("حدث خطأ أثناء إرسال البريد، يرجى المحاولة مرة أخرى.");
                 submitBtn.innerText = "تأكيد وإرسال الطلب عبر البريد";
                 submitBtn.disabled = false;
