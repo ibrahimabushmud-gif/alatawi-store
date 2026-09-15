@@ -583,7 +583,31 @@
     <!-- JavaScript -->
 
     <script src="app.js"></script>
+<!-- هنا نهاية الأقسام الخاصة بك -->
+    
+    <!-- ================= CHECKOUT MODAL ================= -->
+    <div class="overlay" id="checkoutOverlay">
+        <div class="account-modal" style="max-width: 500px;">
+            <button class="close-button" id="closeCheckout">×</button>
+            <div class="account-icon">🛍️</div>
+            <h2>إتمام الطلب</h2>
+            <p>الرجاء إدخال بيانات التوصيل لإكمال الطلب.</p>
+
+            <form id="checkoutForm">
+                <label>الاسم الكامل</label>
+                <input type="text" id="clientName" placeholder="أدخل اسمك الكامل" required>
+
+                <label>رقم الهاتف</label>
+                <input type="tel" id="clientPhone" placeholder="059xxxxxxxx" required>
+
+                <label>عنوان التوصيل (المدينة / الحي / الشارع)</label>
+                <textarea id="clientAddress" placeholder="أدخل العنوان بالتفصيل..." rows="3" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit;"></textarea>
+
+                <button type="submit" class="primary-button full-width">تأكيد وإرسال الطلب عبر البريد</button>
+            </form>
+        </div>
+    </div>
 
 </body>
-
 </html>
+
