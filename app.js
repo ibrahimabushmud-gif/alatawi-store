@@ -1482,7 +1482,6 @@ document
    START STORE
 ===================================================== */
 
-displayCategories();
 function displayCategorizedSections() {
     if (smartPhonesContainer) {
         smartPhonesContainer.innerHTML = "";
@@ -1509,11 +1508,8 @@ function displayCategorizedSections() {
     }
 }
 
+// تشغيل المتجر وعرض المنتجات والأقسام
 displayCategorizedSections();
-
-
 displayOffers();
-
 updateCart();
-
 setupNavigation();
