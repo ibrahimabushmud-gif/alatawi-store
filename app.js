@@ -77,310 +77,340 @@ const categories = [
 /* =====================================================
    PRODUCTS
 ===================================================== */
-
 const products = [
+
+    // =========================
+    // iPhone
+    // =========================
 
     {
         id: 1,
-
-        name: "سماعة رأس بلوتوث لاسلكية",
-
-        category: "الصوتيات",
-
-        price: 79,
-
-        oldPrice: 129,
-
-        image:
-            "https://media.zid.store/68dc0966-9708-4c53-81d0-0cce7c71d8bf/5f98bdab-d29e-429c-ba58-a9c949fa39a5.jpeg",
-
+        name: "iPhone 12",
+        category: "الأجهزة الذكية",
+        price: 1499,
+        oldPrice: 1699,
+        image: "iphone12.jpg",
         rating: 4.8,
-
         featured: true
     },
-
 
     {
         id: 2,
-
-        name: "ميكروفون لاسلكي للايفون",
-
-        category: "الصوتيات",
-
-        price: 89,
-
-        oldPrice: 149,
-
-        image:
-            "https://media.zid.store/68dc0966-9708-4c53-81d0-0cce7c71d8bf/baa479de-ca5e-4372-9379-d1916dfd9c40.webp",
-
-        rating: 4.7,
-
+        name: "iPhone 12 Pro Max",
+        category: "الأجهزة الذكية",
+        price: 1899,
+        oldPrice: 2099,
+        image: "iphone12_promax.jpeg",
+        rating: 4.9,
         featured: true
     },
-
 
     {
         id: 3,
-
-        name: "سماعات أذن لاسلكية",
-
-        category: "الصوتيات",
-
-        price: 49,
-
-        oldPrice: 99,
-
-        image:
-            "https://media.zid.store/68dc0966-9708-4c53-81d0-0cce7c71d8bf/4704401a-ebb3-4212-962d-cf18d1c83589.webp",
-
-        rating: 4.6,
-
+        name: "iPhone 15 Pro Max",
+        category: "الأجهزة الذكية",
+        price: 3499,
+        oldPrice: 3799,
+        image: "iphone15_promax.jpeg",
+        rating: 4.9,
         featured: true
     },
-
 
     {
         id: 4,
-
-        name: "شاحن سيارة سريع 53W",
-
-        category: "الشواحن والكيابل",
-
-        price: 39,
-
-        oldPrice: 69,
-
-        image:
-            "https://media.zid.store/68dc0966-9708-4c53-81d0-0cce7c71d8bf/88de4323-092e-4b2c-aa1d-3192c5f0fe82.jpg",
-
-        rating: 4.5,
-
+        name: "iPhone 16 Pro Max",
+        category: "الأجهزة الذكية",
+        price: 3999,
+        oldPrice: 4299,
+        image: "iphone16_promax.jpeg",
+        rating: 4.9,
         featured: true
     },
-
 
     {
         id: 5,
-
-        name: "حامل جوال مغناطيسي للسيارة",
-
-        category: "ملحقات السيارة",
-
-        price: 29,
-
-        oldPrice: 59,
-
-        image:
-            "https://media.zid.store/68dc0966-9708-4c53-81d0-0cce7c71d8bf/3c2ddf0e-44af-496a-8ccf-7aabb24c7334.jpeg",
-
-        rating: 4.5,
-
+        name: "iPhone 17 Pro",
+        category: "الأجهزة الذكية",
+        price: 4299,
+        oldPrice: 4599,
+        image: "iphone17_pro.jpeg",
+        rating: 5.0,
         featured: true
     },
-
 
     {
         id: 6,
-
-        name: "حامل جوال ماج سيف",
-
-        category: "الاستاندات",
-
-        price: 35,
-
-        oldPrice: 69,
-
-        image:
-            "https://media.zid.store/68dc0966-9708-4c53-81d0-0cce7c71d8bf/5e528dcc-ed89-49ca-842e-fa9b96ce8f0e.jpeg",
-
-        rating: 4.4,
-
+        name: "iPhone 17 Pro Max",
+        category: "الأجهزة الذكية",
+        price: 4699,
+        oldPrice: 4999,
+        image: "iphone17_promax.jpeg",
+        rating: 5.0,
         featured: true
     },
 
+
+    // =========================
+    // Samsung Galaxy Ultra
+    // =========================
 
     {
         id: 7,
-
-        name: "حماية شاشة للجوال",
-
-        category: "بكجات وحمايات",
-
-        price: 9,
-
-        oldPrice: 29,
-
-        image:
-            "https://media.zid.store/68dc0966-9708-4c53-81d0-0cce7c71d8bf/1db18922-3138-40fe-9d17-cac927fb39aa.jpg",
-
-        rating: 4.4,
-
+        name: "Samsung Galaxy S22 Ultra",
+        category: "الأجهزة الذكية",
+        price: 2299,
+        oldPrice: 2599,
+        image: "64365.jpeg",
+        rating: 4.7,
         featured: true
     },
-
 
     {
         id: 8,
-
-        name: "كفر حماية للايفون",
-
-        category: "الكفرات",
-
-        price: 19,
-
-        oldPrice: 49,
-
-        image:
-            "https://media.zid.store/68dc0966-9708-4c53-81d0-0cce7c71d8bf/5e528dcc-ed89-49ca-842e-fa9b96ce8f0e.jpeg",
-
-        rating: 4.7,
-
+        name: "Samsung Galaxy S23 Ultra",
+        category: "الأجهزة الذكية",
+        price: 2799,
+        oldPrice: 3199,
+        image: "64366.jpeg",
+        rating: 4.8,
         featured: true
     },
-
 
     {
         id: 9,
-
-        name: "ساعة ذكية رياضية",
-
-        category: "الساعات الذكية",
-
-        price: 149,
-
-        oldPrice: 249,
-
-        image:
-            "https://media.zid.store/68dc0966-9708-4c53-81d0-0cce7c71d8bf/7352f257-8cdc-4807-9d5c-65e30b5870e2.jpeg",
-
-        rating: 4.6,
-
+        name: "Samsung Galaxy S24 Ultra",
+        category: "الأجهزة الذكية",
+        price: 3299,
+        oldPrice: 3699,
+        image: "64367.jpeg",
+        rating: 4.9,
         featured: true
     },
-
 
     {
         id: 10,
-
-        name: "جهاز سامسونج Galaxy S25 FE",
-
+        name: "Samsung Galaxy S25 Ultra",
         category: "الأجهزة الذكية",
-
-        price: 2099,
-
-        oldPrice: 2499,
-
-        image:
-            "https://media.zid.store/68dc0966-9708-4c53-81d0-0cce7c71d8bf/3c93bcba-4219-4148-a3a1-249101f66649.jpeg",
-
+        price: 3899,
+        oldPrice: 4299,
+        image: "64368.jpeg",
         rating: 4.9,
-
         featured: true
     },
-
 
     {
         id: 11,
-
-        name: "جهاز لوحي 10.1 بوصة",
-
+        name: "Samsung Galaxy S26 Ultra",
         category: "الأجهزة الذكية",
-
-        price: 599,
-
-        oldPrice: 699,
-
-        image:
-            "https://media.zid.store/68dc0966-9708-4c53-81d0-0cce7c71d8bf/4704401a-ebb3-4212-962d-cf18d1c83589.webp",
-
-        rating: 4.5,
-
-        featured: false
-    },
-
-
-    {
-        id: 12,
-
-        name: "توصيلة كهربائية سريعة",
-
-        category: "الشواحن والكيابل",
-
-        price: 59,
-
-        oldPrice: 99,
-
-        image:
-            "https://media.zid.store/68dc0966-9708-4c53-81d0-0cce7c71bb709.jpeg",
-
-        rating: 4.4,
-
-        featured: false
-    },
-
-
-    {
-        id: 13,
-
-        name: "كفر حماية مع حماية شاشة",
-
-        category: "الكفرات",
-
-        price: 9,
-
-        oldPrice: 39,
-
-        image:
-            "https://media.zid.store/68dc0966-9708-4c53-81d0-0cce7c71d8bf/b5115a29-ddd5-45f2-a884-2c3ba5523991.jpeg",
-
-        rating: 4.3,
-
+        price: 4499,
+        oldPrice: 4799,
+        image: "64369.jpeg",
+        rating: 5.0,
         featured: true
     },
 
 
+    // =========================
+    // Xiaomi
+    // =========================
+
+    {
+        id: 12,
+        name: "Xiaomi Titanium Series",
+        category: "الأجهزة الذكية",
+        price: 2999,
+        oldPrice: 3299,
+        image: "64371.jpeg",
+        rating: 4.8,
+        featured: true
+    },
+
+    {
+        id: 13,
+        name: "Xiaomi Flagship Leica",
+        category: "الأجهزة الذكية",
+        price: 3199,
+        oldPrice: 3499,
+        image: "64372.jpeg",
+        rating: 4.9,
+        featured: true
+    },
+
     {
         id: 14,
-
-        name: "حامل جوال تلسكوبي",
-
-        category: "الاستاندات",
-
-        price: 49,
-
-        oldPrice: 99,
-
-        image:
-            "https://media.zid.store/68dc0966-9708-4c53-81d0-0cce7c71d8bf/0c9be404-c2e9-4824-8470-2f81f0d3f3d7.jpg",
-
-        rating: 4.4,
-
-        featured: false
+        name: "Xiaomi Smart Clock Edition",
+        category: "الأجهزة الذكية",
+        price: 2499,
+        oldPrice: 2799,
+        image: "64373.jpeg",
+        rating: 4.7,
+        featured: true
     },
 
 
+    // =========================
+    // Red Magic
+    // =========================
+
     {
         id: 15,
-
-        name: "سماعة لاسلكية متطورة",
-
-        category: "الصوتيات",
-
-        price: 199,
-
-        oldPrice: 299,
-
-        image:
-            "https://media.zid.store/68dc0966-9708-4c53-81d0-0cce7c71d8bf/88de4323-092e-4b2c-aa1d-3192c5f0fe82.jpg",
-
+        name: "Red Magic White Edition",
+        category: "ملحقات الألعاب",
+        price: 2799,
+        oldPrice: 3099,
+        image: "64374.jpeg",
         rating: 4.8,
+        featured: true
+    },
 
+    {
+        id: 16,
+        name: "Red Magic Ultra Gaming",
+        category: "ملحقات الألعاب",
+        price: 2999,
+        oldPrice: 3299,
+        image: "64375.jpeg",
+        rating: 4.9,
+        featured: true
+    },
+
+    {
+        id: 17,
+        name: "Red Magic Cyber Black",
+        category: "ملحقات الألعاب",
+        price: 3199,
+        oldPrice: 3499,
+        image: "64376.jpeg",
+        rating: 4.9,
+        featured: true
+    },
+
+    {
+        id: 18,
+        name: "Red Magic Pro Transparent",
+        category: "ملحقات الألعاب",
+        price: 3399,
+        oldPrice: 3699,
+        image: "64377.jpeg",
+        rating: 5.0,
+        featured: true
+    },
+
+
+    // =========================
+    // Apple Accessories
+    // =========================
+
+    {
+        id: 19,
+        name: "AirPods Pro 2 USB-C",
+        category: "الصوتيات",
+        price: 799,
+        oldPrice: 899,
+        image: "airpods_pro_2.jpg",
+        rating: 4.9,
+        featured: true
+    },
+
+    {
+        id: 20,
+        name: "AirPods Max",
+        category: "الصوتيات",
+        price: 1899,
+        oldPrice: 2099,
+        image: "airpods_max.jpg",
+        rating: 4.8,
+        featured: true
+    },
+
+    {
+        id: 21,
+        name: "Apple Watch Ultra 2",
+        category: "الساعات الذكية",
+        price: 2899,
+        oldPrice: 3199,
+        image: "apple_watch_ultra_2.jpg",
+        rating: 4.9,
+        featured: true
+    },
+
+    {
+        id: 22,
+        name: "Apple Watch Series 9",
+        category: "الساعات الذكية",
+        price: 1499,
+        oldPrice: 1699,
+        image: "apple_watch_series_9.jpg",
+        rating: 4.8,
+        featured: true
+    },
+
+
+    // =========================
+    // Chargers
+    // =========================
+
+    {
+        id: 23,
+        name: "شاحن أبل سريع 20W",
+        category: "الشواحن والكيابل",
+        price: 89,
+        oldPrice: 119,
+        image: "apple_charger_20w.jpg",
+        rating: 4.8,
+        featured: true
+    },
+
+    {
+        id: 24,
+        name: "Anker MagGo 10000",
+        category: "الشواحن والكيابل",
+        price: 249,
+        oldPrice: 299,
+        image: "anker_maggo_10000.jpg",
+        rating: 4.8,
+        featured: true
+    },
+
+
+    // =========================
+    // Accessories
+    // =========================
+
+    {
+        id: 25,
+        name: "كفر حماية شفاف مضاد للصدمات",
+        category: "الكفرات",
+        price: 59,
+        oldPrice: 89,
+        image: "clear_case.jpg",
+        rating: 4.7,
+        featured: true
+    },
+
+    {
+        id: 26,
+        name: "حماية شاشة زجاج مقاوم للكسر",
+        category: "بكجات وحمايات",
+        price: 39,
+        oldPrice: 69,
+        image: "screen_protector.jpg",
+        rating: 4.7,
+        featured: true
+    },
+
+    {
+        id: 27,
+        name: "حامل هواتف مغناطيسي للسيارة",
+        category: "ملحقات السيارة",
+        price: 79,
+        oldPrice: 109,
+        image: "car_holder.jpg",
+        rating: 4.8,
         featured: true
     }
 
 ];
-
 
 
 /* =====================================================
