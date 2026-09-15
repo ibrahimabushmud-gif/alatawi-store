@@ -3,588 +3,210 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>العطاوي للاتصالات</title>
-
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script type="text/javascript">
-   (function(){
-      emailjs.init("hZOtizBjJy0CcBmN");
-   })();
-</script>
-
+    <script type="text/javascript">
+       (function(){
+          emailjs.init("hZOtizBjJy0CcBmN");
+       })();
+    </script>
 </head>
 
 <body>
 
     <!-- ================= HEADER ================= -->
-
     <header class="header">
-
         <!-- Top Bar -->
         <div class="top-bar">
             <div class="container top-bar-content">
-
                 <span>🚚 شحن سريع وآمن</span>
-
                 <span>📞 خدمة العملاء</span>
-
                 <span>💳 طرق دفع متعددة</span>
-
             </div>
         </div>
 
-
         <!-- Main Header -->
         <div class="main-header">
-
             <div class="container header-content">
-
                 <!-- Logo -->
                 <a href="#" class="logo">
                     <span>العطاوي</span>
                     <small>للاتصالات</small>
                 </a>
 
-
                 <!-- Search -->
                 <div class="search-box">
-
-                    <input
-                        type="text"
-                        id="searchInput"
-                        placeholder="ابحث عن منتج..."
-                    >
-
-                    <button id="searchButton">
-                        🔍
-                    </button>
-
+                    <input type="text" id="searchInput" placeholder="ابحث عن منتج...">
+                    <button id="searchButton">🔍</button>
                 </div>
-
 
                 <!-- Account -->
                 <button class="header-button" id="accountButton">
-
                     👤
-
-                    <span>
-                        حسابي
-                    </span>
-
+                    <span>حسابي</span>
                 </button>
-
 
                 <!-- Cart -->
                 <button class="header-button cart-button" id="cartButton">
-
                     🛒
-
-                    <span>
-                        السلة
-                    </span>
-
+                    <span>السلة</span>
                     <b id="cartCount">0</b>
-
                 </button>
-
             </div>
-
         </div>
-
 
         <!-- Navigation -->
-
         <nav class="navigation">
-
             <div class="container navigation-content">
-
-                <a href="#" data-category="all">
-                    الرئيسية
-                </a>
-
-                <a href="#" data-category="all">
-                    جميع المنتجات
-                </a>
-
-                <a href="#" data-category="الأجهزة الذكية">
-                    الأجهزة الذكية
-                </a>
-
-                <a href="#" data-category="الكفرات">
-                    الكفرات
-                </a>
-
-                <a href="#" data-category="الصوتيات">
-                    الصوتيات
-                </a>
-
-                <a href="#" data-category="الشواحن والكيابل">
-                    الشواحن والكيابل
-                </a>
-
-                <a href="#" data-category="الساعات الذكية">
-                    الساعات الذكية
-                </a>
-
-                <a href="#" data-category="ملحقات السيارة">
-                    ملحقات السيارة
-                </a>
-
-                <a href="#" data-category="عروض">
-                    🔥 العروض
-                </a>
-
+                <a href="#" data-category="all">الرئيسية</a>
+                <a href="#" data-category="all">جميع المنتجات</a>
+                <a href="#" data-category="الأجهزة الذكية">الأجهزة الذكية</a>
+                <a href="#" data-category="الكفرات">الكفرات</a>
+                <a href="#" data-category="الصوتيات">الصوتيات</a>
+                <a href="#" data-category="الشواحن والكيابل">الشواحن والكيابل</a>
+                <a href="#" data-category="الساعات الذكية">الساعات الذكية</a>
+                <a href="#" data-category="ملحقات السيارة">ملحقات السيارة</a>
+                <a href="#" data-category="عروض">🔥 العروض</a>
             </div>
-
         </nav>
-
     </header>
 
-
     <!-- ================= MAIN ================= -->
-
     <main>
-
-
         <!-- HERO -->
-
         <section class="hero">
-
             <div class="container hero-content">
-
                 <div class="hero-text">
-
-                    <span class="hero-label">
-                        متجر العطاوي للاتصالات
-                    </span>
-
-                    <h1>
-                        كل احتياجاتك التقنية
-                        <br>
-                        في مكان واحد
-                    </h1>
-
-                    <p>
-                        أجهزة جوال، إكسسوارات، سماعات،
-                        شواحن وملحقات بأفضل الأسعار.
-                    </p>
-
-                    <button class="primary-button" id="shopButton">
-                        تسوق الآن
-                    </button>
-
+                    <span class="hero-label">متجر العطاوي للاتصالات</span>
+                    <h1>كل احتياجاتك التقنية<br>في مكان واحد</h1>
+                    <p>أجهزة جوال، إكسسوارات، سماعات، شواحن وملحقات بأفضل الأسعار.</p>
+                    <button class="primary-button" id="shopButton">تسوق الآن</button>
                 </div>
-
-
                 <div class="hero-image">
-
                     📱
-
-                    <div>
-                        🎧
-                        ⌚
-                    </div>
-
+                    <div>🎧 ⌚</div>
                 </div>
-
             </div>
-
         </section>
-
-
 
         <!-- ================= CATEGORIES ================= -->
-
         <section class="section">
-
             <div class="container">
-
                 <div class="section-header">
-
                     <div>
-
-                        <span class="section-small-title">
-                            اكتشف منتجاتنا
-                        </span>
-
-                        <h2>
-                            التصنيفات
-                        </h2>
-
+                        <span class="section-small-title">اكتشف منتجاتنا</span>
+                        <h2>التصنيفات</h2>
                     </div>
-
-                    <button
-                        class="view-all"
-                        data-category="all"
-                    >
-                        عرض الكل
-                    </button>
-
+                    <button class="view-all" data-category="all">عرض الكل</button>
                 </div>
-
-
-                <div
-                    class="categories"
-                    id="categoriesContainer"
-                >
-
+                <div class="categories" id="categoriesContainer">
                     <!-- JavaScript will add categories -->
-
                 </div>
-
             </div>
-
         </section>
-
-
 
         <!-- ================= OFFERS ================= -->
-
         <section class="section offers-section">
-
             <div class="container">
-
                 <div class="section-header">
-
                     <div>
-
-                        <span class="section-small-title">
-                            لا تفوت الفرصة
-                        </span>
-
-                        <h2>
-                            🔥 عروض مميزة
-                        </h2>
-
+                        <span class="section-small-title">لا تفوت الفرصة</span>
+                        <h2>🔥 عروض مميزة</h2>
                     </div>
-
-                    <button
-                        class="view-all"
-                        data-category="عروض"
-                    >
-                        عرض الكل
-                    </button>
-
+                    <button class="view-all" data-category="عروض">عرض الكل</button>
                 </div>
-
-
-                
-                    <div class="horizontal-scroll-container" id="offersContainer">
-
-                
-
+                <div class="horizontal-scroll-container" id="offersContainer">
                     <!-- JavaScript -->
-
                 </div>
-
             </div>
-
         </section>
 
-
-
-        
-<!-- ================= CATEGORY SECTIONS ================= -->
-
-<!-- قسم الأجهزة الذكية والآيفون -->
-<section class="section">
-    <div class="container">
-        <div class="section-header">
-            <div>
-                <span class="section-small-title">تسوق حسب الفئة</span>
-                <h2>📱 الأجهزة الذكية والآيفون</h2>
+        <!-- ================= CATEGORY SECTIONS ================= -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <span class="section-small-title">تسوق حسب الفئة</span>
+                        <h2>📱 الأجهزة الذكية والآيفون</h2>
+                    </div>
+                </div>
+                <div class="horizontal-scroll-container" id="smartPhonesContainer">
+                    <!-- JavaScript will add products -->
+                </div>
             </div>
-        </div>
-        <div class="horizontal-scroll-container" id="smartPhonesContainer">
-            <!-- JavaScript will add products -->
-        </div>
-    </div>
-</section>
+        </section>
 
-<!-- قسم الساعات والإكسسوارات -->
-<section class="section">
-    <div class="container">
-        <div class="section-header">
-            <div>
-                <span class="section-small-title">تكنولوجيا لبسة</span>
-                <h2>⌚ الساعات الذكية والإكسسوارات</h2>
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <span class="section-small-title">تكنولوجيا لبسة</span>
+                        <h2>⌚ الساعات الذكية والإكسسوارات</h2>
+                    </div>
+                </div>
+                <div class="horizontal-scroll-container" id="accessoriesContainer">
+                    <!-- JavaScript will add products -->
+                </div>
             </div>
-        </div>
-        <div class="horizontal-scroll-container" id="accessoriesContainer">
-            <!-- JavaScript will add products -->
-        </div>
-    </div>
-</section>
+        </section>
 
-<!-- قسم ملحقات السيارة والشيابل (أو أي قسم آخر تفضله) -->
-<section class="section">
-    <div class="container">
-        <div class="section-header">
-            <div>
-                <span class="section-small-title">حسب الطلب</span>
-                <h2>🚗 ملحقات السيارة والشواحن</h2>
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <span class="section-small-title">حسب الطلب</span>
+                        <h2>🚗 ملحقات السيارة والشواحن</h2>
+                    </div>
+                </div>
+                <div class="horizontal-scroll-container" id="carTechContainer">
+                    <!-- JavaScript will add products -->
+                </div>
             </div>
-        </div>
-        <div class="horizontal-scroll-container" id="carTechContainer">
-            <!-- JavaScript will add products -->
-        </div>
-    </div>
-</section>
-
+        </section>
+    </main>
 
     <!-- ================= CART ================= -->
-
-    <div
-        class="overlay"
-        id="cartOverlay"
-    >
-
+    <div class="overlay" id="cartOverlay">
         <div class="side-panel cart-panel">
-
             <div class="panel-header">
-
-                <h2>
-                    🛒 سلة المشتريات
-                </h2>
-
-                <button
-                    class="close-button"
-                    id="closeCart"
-                >
-                    ×
-                </button>
-
+                <h2>🛒 سلة المشتريات</h2>
+                <button class="close-button" id="closeCart">×</button>
             </div>
-
-
-            <div
-                class="cart-items"
-                id="cartItems"
-            >
-
+            <div class="cart-items" id="cartItems">
                 <!-- JavaScript -->
-
             </div>
-
-
             <div class="cart-footer">
-
                 <div class="cart-total">
-
-                    <span>
-                        الإجمالي
-                    </span>
-
-                    <strong id="cartTotal">
-                        0.00 ر.س
-                    </strong>
-
+                    <span>الإجمالي</span>
+                    <strong id="cartTotal">0.00 ر.س</strong>
                 </div>
-
-
-                <button
-                    class="checkout-button"
-                    id="checkoutButton"
-                >
-                    إتمام الطلب
-                </button>
-
+                <button class="checkout-button" id="checkoutButton">إتمام الطلب</button>
             </div>
-
         </div>
-
     </div>
-
-
 
     <!-- ================= ACCOUNT ================= -->
-
-    <div
-        class="overlay"
-        id="accountOverlay"
-    >
-
+    <div class="overlay" id="accountOverlay">
         <div class="account-modal">
-
-            <button
-                class="close-button"
-                id="closeAccount"
-            >
-                ×
-            </button>
-
-
-            <div class="account-icon">
-                👤
-            </div>
-
-
-            <h2>
-                تسجيل الدخول
-            </h2>
-
-            <p>
-                سجّل الدخول للوصول إلى حسابك وطلباتك.
-            </p>
-
-
+            <button class="close-button" id="closeAccount">×</button>
+            <div class="account-icon">👤</div>
+            <h2>تسجيل الدخول</h2>
+            <p>سجّل الدخول للوصول إلى حسابك وطلباتك.</p>
             <form id="loginForm">
-
-                <label>
-                    البريد الإلكتروني
-                </label>
-
-                <input
-                    type="email"
-                    id="email"
-                    placeholder="example@email.com"
-                    required
-                >
-
-
-                <label>
-                    كلمة المرور
-                </label>
-
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="كلمة المرور"
-                    required
-                >
-
-
-                <button
-                    type="submit"
-                    class="primary-button full-width"
-                >
-                    تسجيل الدخول
-                </button>
-
+                <label>البريد الإلكتروني</label>
+                <input type="email" id="email" placeholder="example@email.com" required>
+                <label>كلمة المرور</label>
+                <input type="password" id="password" placeholder="كلمة المرور" required>
+                <button type="submit" class="primary-button full-width">تسجيل الدخول</button>
             </form>
-
-
-            <div class="account-divider">
-                أو
-            </div>
-
-
-            <button
-                class="secondary-button full-width"
-                id="registerButton"
-            >
-                إنشاء حساب جديد
-            </button>
-
+            <div class="account-divider">أو</div>
+            <button class="secondary-button full-width" id="registerButton">إنشاء حساب جديد</button>
         </div>
-
     </div>
 
-
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer class="footer">
-
-        <div class="container footer-grid">
-
-
-            <div>
-
-                <div class="footer-logo">
-                    العطاوي
-                </div>
-
-                <p>
-                    متجر متخصص في الأجهزة الذكية
-                    والإكسسوارات والمنتجات التقنية.
-                </p>
-
-            </div>
-
-
-            <div>
-
-                <h3>
-                    روابط مهمة
-                </h3>
-
-                <a href="#">
-                    من نحن
-                </a>
-
-                <a href="#">
-                    سياسة الخصوصية
-                </a>
-
-                <a href="#">
-                    الشروط والأحكام
-                </a>
-
-            </div>
-
-
-            <div>
-
-                <h3>
-                    خدمة العملاء
-                </h3>
-
-                <a href="#">
-                    الشحن والتوصيل
-                </a>
-
-                <a href="#">
-                    الاستبدال والاسترجاع
-                </a>
-
-                <a href="#">
-                    تواصل معنا
-                </a>
-
-            </div>
-
-
-            <div>
-
-                <h3>
-                    طرق الدفع
-                </h3>
-
-                <div class="payment-methods">
-
-                    <span>💳</span>
-                    <span>💵</span>
-                    <span>📱</span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="copyright">
-
-            جميع الحقوق محفوظة © 2026
-            العطاوي للاتصالات
-
-        </div>
-
-    </footer>
-
-
-
-    <!-- JavaScript -->
-
-    <script src="app.js"></script>
-<!-- هنا نهاية الأقسام الخاصة بك -->
-    
     <!-- ================= CHECKOUT MODAL ================= -->
     <div class="overlay" id="checkoutOverlay">
         <div class="account-modal" style="max-width: 500px;">
@@ -592,22 +214,52 @@
             <div class="account-icon">🛍️</div>
             <h2>إتمام الطلب</h2>
             <p>الرجاء إدخال بيانات التوصيل لإكمال الطلب.</p>
-
             <form id="checkoutForm">
                 <label>الاسم الكامل</label>
                 <input type="text" id="clientName" placeholder="أدخل اسمك الكامل" required>
-
                 <label>رقم الهاتف</label>
                 <input type="tel" id="clientPhone" placeholder="059xxxxxxxx" required>
-
                 <label>عنوان التوصيل (المدينة / الحي / الشارع)</label>
                 <textarea id="clientAddress" placeholder="أدخل العنوان بالتفصيل..." rows="3" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit;"></textarea>
-
                 <button type="submit" class="primary-button full-width">تأكيد وإرسال الطلب عبر البريد</button>
             </form>
         </div>
     </div>
 
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-logo">العطاوي</div>
+                <p>متجر متخصص في الأجهزة الذكية والإكسسوارات والمنتجات التقنية.</p>
+            </div>
+            <div>
+                <h3>روابط مهمة</h3>
+                <a href="#">من نحن</a>
+                <a href="#">سياسة الخصوصية</a>
+                <a href="#">الشروط والأحكام</a>
+            </div>
+            <div>
+                <h3>خدمة العملاء</h3>
+                <a href="#">الشحن والتوصيل</a>
+                <a href="#">الاستبدال والاسترجاع</a>
+                <a href="#">تواصل معنا</a>
+            </div>
+            <div>
+                <h3>طرق الدفع</h3>
+                <div class="payment-methods">
+                    <span>💳</span>
+                    <span>💵</span>
+                    <span>📱</span>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            جميع الحقوق محفوظة © 2026 العطاوي للاتصالات
+        </div>
+    </footer>
+
+    <!-- JavaScript (Placed at the very bottom so all elements load first) -->
+    <script src="app.js"></script>
 </body>
 </html>
-
