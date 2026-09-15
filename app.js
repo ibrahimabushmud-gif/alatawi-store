@@ -522,3 +522,30 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+/* =====================================================
+   UPDATE CHECKOUT TOTALS DYNAMICALLY
+===================================================== */
+function updateCheckoutSummary() {
+    let subtotal = 0;
+    
+    // فحص متغير السلة في مشروعك وجلب المجموع
+    if (typeof cart !== "undefined" && cart.length > 0) {
+        subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    }
+    
+    // تحديث النصوص في واجهة إتمام الطلب
+    const subtotalElem = document.getElementById("checkoutSubtotal");
+    const finalTotalElem = document.getElementById("checkoutFinalTotal");
+    
+    const formattedPrice = `₪ ${subtotal.toFixed(2)}`;
+    if (subtotalElem) subtotalElem.innerText = formattedPrice;
+    if (finalTotalElem) finalTotalElem.innerText = formattedPrice;
+}
+
+// تحديث الأسعار فور فتح نافذة إتمام الطلب
+const checkoutBtnTrigger = document.getElementById("checkoutButton");
+if (checkoutBtnTrigger) {
+    checkoutBtnTrigger.addEventListener("click", () => {
+        updateCheckoutSummary();
+    });
+}
