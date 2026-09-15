@@ -1,4 +1,3 @@
-
 /* =====================================================
    ALATAWI STORE
    Main JavaScript
@@ -7,7 +6,6 @@
 /* =====================================================
    CATEGORIES
 ===================================================== */
-
 const categories = [
     { name: "الأجهزة الذكية", icon: "📱" },
     { name: "الكفرات", icon: "🛡️" },
@@ -329,12 +327,73 @@ if (searchInput) {
 
 
 /* =====================================================
+   CUSTOMER ACCOUNT & LOGIN LOGIC (UPDATED)
+===================================================== */
+const loginForm = document.getElementById("loginForm");
+const registerButton = document.getElementById("registerButton");
+
+if (loginForm) {
+    loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        
+        const email = emailInput ? emailInput.value : "";
+        const password = passwordInput ? passwordInput.value : "";
+
+        let savedUser = JSON.parse(localStorage.getItem("alatawiUser")) || {};
+        savedUser.email = email;
+        savedUser.password = password;
+        if (!savedUser.name) savedUser.name = email ? email.split('@')[0] : "مستخدم العطاوي";
+        if (!savedUser.phone) savedUser.phone = "+972592152484";
+
+        localStorage.setItem("alatawiUser", JSON.stringify(savedUser));
+
+        alert("تم تسجيل الدخول بنجاح أهلاً بك في متجر العطاوي!");
+        if (accountOverlay) accountOverlay.classList.remove("active");
+        updateAccountDisplay();
+    });
+}
+
+if (registerButton) {
+    registerButton.addEventListener("click", () => {
+        const name = prompt("أدخل اسمك الكامل:");
+        const email = prompt("أدخل بريدك الإلكتروني:");
+        const phone = prompt("أدخل رقم هاتفك:");
+        const password = prompt("أنشئ كلمة مرور جديدة:");
+        
+        if (email && password) {
+            const userData = { name: name || "مستخدم جديد", email, phone: phone || "+972592152484", password };
+            localStorage.setItem("alatawiUser", JSON.stringify(userData));
+            alert("تم إنشاء الحساب بنجاح! يمكنك الآن تسجيل الدخول.");
+            updateAccountDisplay();
+        }
+    });
+}
+
+// دالة لتعبئة صفحة الحساب بالبيانات المحفوظة تلقائياً
+function updateAccountDisplay() {
+    const savedUser = JSON.parse(localStorage.getItem("alatawiUser"));
+    if (!savedUser) return;
+
+    const nameEl = document.querySelector(".account-name") || document.getElementById("userName");
+    const phoneEl = document.querySelector(".account-phone") || document.getElementById("userPhone");
+    const emailEl = document.querySelector(".account-email") || document.getElementById("userEmail");
+
+    if (nameEl && savedUser.name) nameEl.innerText = savedUser.name;
+    if (phoneEl && savedUser.phone) phoneEl.innerText = savedUser.phone;
+    if (emailEl && savedUser.email) emailEl.innerText = savedUser.email;
+}
+
+
+/* =====================================================
    INITIALIZATION ON PAGE LOAD
 ===================================================== */
 document.addEventListener("DOMContentLoaded", () => {
     displayCategories();
     renderStoreSections();
     updateCart();
+    updateAccountDisplay();
 
     const cartButton = document.getElementById("cartButton");
     const closeCart = document.getElementById("closeCart");
@@ -362,101 +421,4 @@ document.addEventListener("DOMContentLoaded", () => {
             smartPhonesContainer.scrollIntoView({ behavior: "smooth" });
         });
     }
-});
-
-
-/* =====================================================
-   CUSTOMER ACCOUNT & LOGIN LOGIC
-===================================================== */
-const loginForm = document.getElementById("loginForm");
-const registerButton = document.getElementById("registerButton");
-
-if (loginForm) {
-    loginForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-
-        const userData = { email, password };
-        localStorage.setItem("alatawiUser", JSON.stringify(userData));
-
-        alert("تم تسجيل الدخول بنجاح أهلاً بك في متجر العطاوي!");
-        if (accountOverlay) accountOverlay.classList.remove("active");
-    });
-}
-
-if (registerButton) {
-    registerButton.addEventListener("click", () => {
-        const email = prompt("أدخل بريدك الإلكتروني لإنشاء حساب جديد:");
-        const password = prompt("أنشئ كلمة مرور جديدة:");
-        
-        if (email && password) {
-            const userData = { email, password };
-            localStorage.setItem("alatawiUser", JSON.stringify(userData));
-            alert("تم إنشاء الحساب بنجاح! يمكنك الآن تسجيل الدخول.");
-        }
-    });
-}
-
-/* =====================================================
-   CUSTOMER ACCOUNT & LOGIN LOGIC (UPDATED)
-===================================================== */
-const loginForm = document.getElementById("loginForm");
-const registerButton = document.getElementById("registerButton");
-
-if (loginForm) {
-    loginForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-
-        // جلب البيانات القديمة أو إنشاء كائن جديد مع بيانات افتراضية إذا لم تكن موجودة
-        let savedUser = JSON.parse(localStorage.getItem("alatawiUser")) || {};
-        savedUser.email = email;
-        savedUser.password = password;
-        if (!savedUser.name) savedUser.name = email.split('@')[0];
-        if (!savedUser.phone) savedUser.phone = "+972592152484"; // رقم افتراضي أو مستعار من بياناتك
-
-        localStorage.setItem("alatawiUser", JSON.stringify(savedUser));
-
-        alert("تم تسجيل الدخول بنجاح أهلاً بك في متجر العطاوي!");
-        if (accountOverlay) accountOverlay.classList.remove("active");
-        updateAccountDisplay();
-    });
-}
-
-if (registerButton) {
-    registerButton.addEventListener("click", () => {
-        const name = prompt("أدخل اسمك الكامل:");
-        const email = prompt("أدخل بريدك الإلكتروني:");
-        const phone = prompt("أدخل رقم هاتفك:");
-        const password = prompt("أنشئ كلمة مرور جديدة:");
-        
-        if (email && password) {
-            const userData = { name, email, phone, password };
-            localStorage.setItem("alatawiUser", JSON.stringify(userData));
-            alert("تم إنشاء الحساب بنجاح! يمكنك الآن تسجيل الدخول.");
-            updateAccountDisplay();
-        }
-    });
-}
-
-// دالة لتعبئة صفحة الحساب بالبيانات المحفوظة تلقائياً
-function updateAccountDisplay() {
-    const savedUser = JSON.parse(localStorage.getItem("alatawiUser"));
-    if (!savedUser) return;
-
-    // محاولة البحث عن العناصر في الصفحة وتعبئتها إن وجدت
-    const nameEl = document.querySelector(".account-name") || document.getElementById("userName");
-    const phoneEl = document.querySelector(".account-phone") || document.getElementById("userPhone");
-    const emailEl = document.querySelector(".account-email") || document.getElementById("userEmail");
-
-    if (nameEl && savedUser.name) nameEl.innerText = savedUser.name;
-    if (phoneEl && savedUser.phone) phoneEl.innerText = savedUser.phone;
-    if (emailEl && savedUser.email) emailEl.innerText = savedUser.email;
-}
-
-// تشغيل الدالة عند تحميل الصفحة
-document.addEventListener("DOMContentLoaded", () => {
-    updateAccountDisplay();
 });
