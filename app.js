@@ -1483,8 +1483,34 @@ document
 ===================================================== */
 
 displayCategories();
+function displayCategorizedSections() {
+    if (smartPhonesContainer) {
+        smartPhonesContainer.innerHTML = "";
+        const phones = products.filter(p => p.category === "الأجهزة الذكية");
+        phones.forEach(product => {
+            smartPhonesContainer.appendChild(createProductCard(product));
+        });
+    }
 
-displayProducts();
+    if (accessoriesContainer) {
+        accessoriesContainer.innerHTML = "";
+        const accessories = products.filter(p => p.category === "الساعات الذكية" || p.category === "الإكسسوارات" || p.category === "الصوتيات");
+        accessories.forEach(product => {
+            accessoriesContainer.appendChild(createProductCard(product));
+        });
+    }
+
+    if (carTechContainer) {
+        carTechContainer.innerHTML = "";
+        const others = products.filter(p => p.category === "ملحقات السيارة" || p.category === "الشواحن والكيابل");
+        others.forEach(product => {
+            carTechContainer.appendChild(createProductCard(product));
+        });
+    }
+}
+
+displayCategorizedSections();
+
 
 displayOffers();
 
