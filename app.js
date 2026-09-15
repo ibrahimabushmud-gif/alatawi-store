@@ -437,7 +437,7 @@ if (checkoutForm) {
 
    
         const templateParams = {
-            to_email: "ibrahim@gmail.com", 
+            to_email: "ibrahimabushmud@gmail.com", 
             name: name,
             client_email: phone, 
             client_phone: phone,
