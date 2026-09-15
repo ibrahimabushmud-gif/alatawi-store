@@ -209,97 +209,85 @@
 
     <!-- START: CHECKOUT MODAL -->
 <div class="overlay" id="checkoutOverlay">
-    <div class="account-modal" style="max-width: 1100px; width: 95%;">
+    <div class="account-modal" style="max-width: 1100px; width: 95%; max-height: 90vh; overflow-y: auto;">
         <button class="close-button" id="closeCheckout">×</button>
         
-        <div class="checkout-container" style="display: flex; gap: 30px; direction: rtl; text-align: right; margin-top: 20px;">
+        <div class="checkout-container" style="display: flex; gap: 30px; direction: rtl; text-align: right; margin-top: 20px; flex-wrap: wrap;">
             
             <!-- القسم الأيمن: معلومات التواصل، التوصيل، والدفع -->
-            <div class="checkout-main-content" style="flex: 2; display: flex; flex-direction: column; gap: 20px;">
+            <div class="checkout-main-content" style="flex: 2; min-width: 300px; display: flex; flex-direction: column; gap: 20px;">
                 
                 <!-- 1. معلومات التواصل -->
                 <div style="background: #fff; border: 1px solid #eaeaea; border-radius: 12px; padding: 20px;">
                     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
                         <span style="background: #2e7d32; color: #fff; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px;">✓</span>
-                        <h3 style="margin: 0; font-size: 16px;">معلومات التواصل</h3>
+                        <h3 style="margin: 0; font-size: 16px;">معلومات التواصل والواتساب</h3>
                     </div>
-                    <div style="background: #fdfdfd; padding: 12px; border: 1px solid #f1f1f1; border-radius: 8px;">
-                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-size: 14px; color: #333;">
-                            <span>👤</span> مرحباً بعودتك، إبراهيم!
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <div>
+                            <label style="font-size: 13px; color: #555; display: block; margin-bottom: 5px;">الاسم الكامل</label>
+                            <input type="text" id="checkoutName" placeholder="أدخل اسمك الكريم" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px;">
                         </div>
-                        <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #333;">
-                            <span>📞</span> +972 592152484
+                        <div>
+                            <label style="font-size: 13px; color: #555; display: block; margin-bottom: 5px;">رقم الواتساب (للتواصل وتأكيد الطلب)</label>
+                            <input type="tel" id="checkoutPhone" placeholder="+972 XXXXXXXXX" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px;">
                         </div>
                     </div>
                 </div>
 
-                <!-- 2. التوصيل -->
+                <!-- 2. التوصيل والعنوان -->
                 <div style="background: #fff; border: 1px solid #eaeaea; border-radius: 12px; padding: 20px;">
                     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
                         <span style="background: #eee; color: #555; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold;">2</span>
-                        <h3 style="margin: 0; font-size: 16px;">التوصيل</h3>
+                        <h3 style="margin: 0; font-size: 16px;">عنوان الاستلام والتوصيل</h3>
                     </div>
                     <div style="font-size: 14px; color: #555;">
-                        <label style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px; cursor: pointer;">
-                            <input type="radio" name="delivery" checked> استلام الطلب بواسطة شخص آخر
-                        </label>
-                        <button type="button" style="background: none; border: 1px solid #ccc; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-size: 13px;">+ إضافة عنوان جديد</button>
+                        <textarea id="checkoutAddress" placeholder="أدخل تفاصيل العنوان بدقة (المدينة، المنطقة، التفاصيل)..." style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; height: 80px; resize: vertical;"></textarea>
                     </div>
                 </div>
 
                 <!-- 3. الدفع -->
                 <div style="background: #fff; border: 1px solid #eaeaea; border-radius: 12px; padding: 20px;">
-                    <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
                         <span style="background: #eee; color: #555; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold;">3</span>
-                        <h3 style="margin: 0; font-size: 16px;">الدفع</h3>
+                        <h3 style="margin: 0; font-size: 16px;">طريقة الدفع</h3>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px; color: #333;">
+                        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 8px; border: 1px solid #eee; border-radius: 8px;">
+                            <input type="radio" name="paymentMethod" value="الدفع عند الاستلام" checked> 💵 الدفع عند الاستلام
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 8px; border: 1px solid #eee; border-radius: 8px;">
+                            <input type="radio" name="paymentMethod" value="تحويل بنكي / PalPay"> 📱 تحويل عبر PalPay أو المحافظ المحمولة
+                        </label>
                     </div>
                 </div>
 
             </div>
 
-            <!-- القسم الأيسر: ملخص الطلب والفواتير -->
-            <div class="checkout-sidebar" style="flex: 1; display: flex; flex-direction: column; gap: 20px;">
+            <!-- القسم الأيسر: ملخص الطلب وزر الإرسال -->
+            <div class="checkout-sidebar" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 20px;">
                 
-                <!-- ملخص الطلب -->
-                <div style="background: #fff; border: 1px solid #eaeaea; border-radius: 12px; padding: 20px;">
-                    <h3 style="margin-top: 0; font-size: 16px; margin-bottom: 15px;">ملخص الطلب (1)</h3>
-                    <div style="display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #f1f1f1; padding-bottom: 15px; margin-bottom: 15px;">
-                        <div style="position: relative;">
-                            <img src="iphone12.jpg" alt="المنتج" style="width: 50px; height: 50px; object-fit: contain; border: 1px solid #eee; border-radius: 6px;">
-                            <span style="position: absolute; top: -8px; right: -8px; background: #333; color: #fff; font-size: 11px; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">1</span>
-                        </div>
-                        <div style="font-size: 13px; color: #333;">متجر العطاوي - طلب جديد</div>
-                    </div>
-                    
-                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13px; margin-bottom: 15px;">
-                        <span>إضافة ملاحظة للطلب</span>
-                        <input type="checkbox" style="cursor: pointer;">
-                    </div>
-
-                    <div style="display: flex; gap: 8px;">
-                        <input type="text" placeholder="استبدل هنا" style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 6px; font-size: 13px;">
-                        <button type="button" style="padding: 8px 15px; background: #f1f1f1; border: 1px solid #ccc; border-radius: 6px; cursor: pointer; font-size: 13px;">تطبيق</button>
-                    </div>
-                </div>
-
                 <!-- ملخص الدفع -->
                 <div style="background: #fff; border: 1px solid #eaeaea; border-radius: 12px; padding: 20px;">
-                    <h3 style="margin-top: 0; font-size: 16px; margin-bottom: 15px;">ملخص الدفع</h3>
+                    <h3 style="margin-top: 0; font-size: 16px; margin-bottom: 15px;">ملخص الطلب</h3>
                     <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 10px; color: #555;">
-                        <span>المجموع الفرعي • 1 عناصر</span>
-                        <span>₪ 138.26</span>
+                        <span>إجمالي المنتجات</span>
+                        <span id="checkoutSubtotal">₪ 0.00</span>
                     </div>
                     <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 15px; color: #555;">
-                        <span>ضريبة القيمة المضافة</span>
-                        <span>₪ 20.74</span>
+                        <span>التوصيل</span>
+                        <span>مجاني / يحدد لاحقاً</span>
                     </div>
                     <hr style="border: none; border-top: 1px solid #eee; margin-bottom: 15px;">
-                    <div style="display: flex; justify-content: space-between; font-size: 16px; font-weight: bold; color: #111; margin-bottom: 5px;">
-                        <span>المجموع</span>
-                        <span>₪ 159.00</span>
+                    <div style="display: flex; justify-content: space-between; font-size: 16px; font-weight: bold; color: #111; margin-bottom: 15px;">
+                        <span>المجموع النهائي</span>
+                        <span id="checkoutFinalTotal">₪ 0.00</span>
                     </div>
-                    <span style="font-size: 11px; color: #777; display: block; margin-bottom: 15px;">شامل ضريبة القيمة المضافة (15%)</span>
-                    <a href="#" style="font-size: 12px; color: #5c2d91; text-decoration: underline;">سياسة الاستبدال والاسترجاع</a>
+                    
+                    <!-- زر إرسال الطلب الفعلي -->
+                    <button type="button" id="submitOrderButton" style="width: 100%; background: #2e7d32; color: #fff; border: none; padding: 12px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.3s;">
+                        🚀 إرسال الطلب الآن
+                    </button>
                 </div>
 
             </div>
