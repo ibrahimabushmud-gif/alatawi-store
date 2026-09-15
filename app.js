@@ -1,3 +1,4 @@
+
 /* =====================================================
    ALATAWI STORE
    Main JavaScript
@@ -151,7 +152,6 @@ function createProductCard(product) {
    RENDER STORE SECTIONS
 ===================================================== */
 function renderStoreSections() {
-    // 1. العروض المميزة
     if (offersContainer) {
         const offers = products.filter(p => p.oldPrice && p.oldPrice > p.price);
         offersContainer.innerHTML = "";
@@ -160,7 +160,6 @@ function renderStoreSections() {
         });
     }
 
-    // 2. الأجهزة الذكية وملحقات الألعاب
     if (smartPhonesContainer) {
         const phones = products.filter(p => p.category === "الأجهزة الذكية" || p.category === "ملحقات الألعاب");
         smartPhonesContainer.innerHTML = "";
@@ -169,7 +168,6 @@ function renderStoreSections() {
         });
     }
 
-    // 3. الساعات والصوتيات والإكسسوارات
     if (accessoriesContainer) {
         const accessories = products.filter(p => p.category === "الساعات الذكية" || p.category === "الصوتيات" || p.category === "الكفرات" || p.category === "بكجات وحمايات");
         accessoriesContainer.innerHTML = "";
@@ -178,7 +176,6 @@ function renderStoreSections() {
         });
     }
 
-    // 4. ملحقات السيارة والشواحن
     if (carTechContainer) {
         const carTech = products.filter(p => p.category === "الشواحن والكيابل" || p.category === "ملحقات السيارة");
         carTechContainer.innerHTML = "";
@@ -190,7 +187,7 @@ function renderStoreSections() {
 
 
 /* =====================================================
-   FILTER BY CATEGORY (عند النقر على التصنيف)
+   FILTER BY CATEGORY
 ===================================================== */
 function filterByCategory(categoryName) {
     let filtered = products;
@@ -202,7 +199,6 @@ function filterByCategory(categoryName) {
         }
     }
     
-    // عرض المنتجات المفلترة مؤقتاً في قسم الأجهزة الذكية كنموذج عرض سريع
     if (smartPhonesContainer) {
         smartPhonesContainer.innerHTML = "";
         if (filtered.length === 0) {
@@ -340,7 +336,6 @@ document.addEventListener("DOMContentLoaded", () => {
     renderStoreSections();
     updateCart();
 
-    // ربط أزرار السلة والحساب
     const cartButton = document.getElementById("cartButton");
     const closeCart = document.getElementById("closeCart");
     const accountButton = document.getElementById("accountButton");
@@ -368,6 +363,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+
 /* =====================================================
    CUSTOMER ACCOUNT & LOGIN LOGIC
 ===================================================== */
@@ -451,8 +448,8 @@ if (checkoutForm) {
         submitBtn.innerText = "جاري إرسال الطلب...";
         submitBtn.disabled = true;
 
-        // إرسال البيانات عبر EmailJS باستخدام بياناتك الحقيقية
-        emailjs.send("service_ak9x10p", "template_frbxkcq", templateParams, "hZOtizjBJy0CczBmn")
+        // تم تصحيح مفتاح EmailJS هنا ليتطابق تماماً مع المفتاح الصحيح
+        emailjs.send("service_ak9x10p", "template_frbxkcq", templateParams, "hZOtizBjJy0CcBmN")
             .then((response) => {
                 alert("🎉 تم إرسال طلبك بنجاح! سنتواصل معك قريباً لتأكيد الشحن.");
                 cart = [];
@@ -468,3 +465,4 @@ if (checkoutForm) {
                 submitBtn.disabled = false;
             });
     });
+}
