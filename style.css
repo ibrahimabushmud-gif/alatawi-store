@@ -1226,3 +1226,24 @@ a {
     }
 
 }
+/* =========================
+   التمرير الأفقي للمنتجات
+========================= */
+.horizontal-scroll-container {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 15px;
+    scrollbar-width: none; /* إخفاء شريط التمرير في فايرفوكس */
+}
+
+.horizontal-scroll-container::-webkit-scrollbar {
+    display: none; /* إخفاء شريط التمرير في كروم وسافاري */
+}
+
+.horizontal-scroll-container .product-card {
+    min-width: 210px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+}
