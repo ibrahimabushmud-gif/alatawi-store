@@ -398,74 +398,65 @@ if (registerButton) {
     });
 }
 
-
 /* =====================================================
-   CHECKOUT & EMAILJS INTEGRATION
+   CUSTOMER ACCOUNT & LOGIN LOGIC (UPDATED)
 ===================================================== */
-const checkoutButton = document.getElementById("checkoutButton");
-const checkoutOverlay = document.getElementById("checkoutOverlay");
-const closeCheckout = document.getElementById("closeCheckout");
-const checkoutForm = document.getElementById("checkoutForm");
+const loginForm = document.getElementById("loginForm");
+const registerButton = document.getElementById("registerButton");
 
-if (checkoutButton) {
-    checkoutButton.addEventListener("click", () => {
-        if (cart.length === 0) {
-            alert("سلة المشتريات فارغة!");
-            return;
-        }
-        if (cartOverlay) cartOverlay.classList.remove("active");
-        if (checkoutOverlay) checkoutOverlay.classList.add("active");
-    });
-}
-
-if (closeCheckout) {
-    closeCheckout.addEventListener("click", () => {
-        if (checkoutOverlay) checkoutOverlay.classList.remove("active");
-    });
-}
-
-if (checkoutForm) {
-    checkoutForm.addEventListener("submit", (e) => {
+if (loginForm) {
+    loginForm.addEventListener("submit", (e) => {
         e.preventDefault();
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
 
-        const name = document.getElementById("clientName").value;
-        const phone = document.getElementById("clientPhone").value;
-        const address = document.getElementById("clientAddress").value;
+        // جلب البيانات القديمة أو إنشاء كائن جديد مع بيانات افتراضية إذا لم تكن موجودة
+        let savedUser = JSON.parse(localStorage.getItem("alatawiUser")) || {};
+        savedUser.email = email;
+        savedUser.password = password;
+        if (!savedUser.name) savedUser.name = email.split('@')[0];
+        if (!savedUser.phone) savedUser.phone = "+972592152484"; // رقم افتراضي أو مستعار من بياناتك
 
-        let orderDetails = cart.map(item => `- ${item.name} (الكمية: ${item.quantity}) - السعر: ${item.price * item.quantity} ر.س`).join("\n");
-        let totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        localStorage.setItem("alatawiUser", JSON.stringify(savedUser));
 
-   
-        const templateParams = {
-            to_email: "ibrahimabushmud@gmail.com", 
-            name: name,
-            client_email: phone, 
-            client_phone: phone,
-            client_address: address,
-            order_items: orderDetails,
-            total_amount: totalPrice + " ر.س",
-            message: `بيانات العميل:\nالاسم: ${name}\nالهاتف: ${phone}\nالعنوان: ${address}\n\nالطلبات:\n${orderDetails}\n\nالإجمالي: ${totalPrice} ر.س`
-        };
-
-        const submitBtn = checkoutForm.querySelector("button[type='submit']");
-        submitBtn.innerText = "جاري إرسال الطلب...";
-        submitBtn.disabled = true;
-
-       emailjs.send("service_ak9x10p", "template_frbxkcq", templateParams, "hZOtizjBJy0CczBmn")
-            .then((response) => {
-                alert("🎉 تم إرسال طلبك بنجاح! سنتواصل معك قريباً لتأكيد الشحن.");
-                cart = [];
-                saveCart();
-                updateCart();
-                checkoutOverlay.classList.remove("active");
-                checkoutForm.reset();
-                submitBtn.innerText = "تأكيد وإرسال الطلب عبر البريد";
-                submitBtn.disabled = false;
-            }, (error) => {
-                console.error("EmailJS Error details:", error);
-                alert("خطأ EmailJS: " + JSON.stringify(error)); // هذا السطر سيطبع لنا السبب الحقيقي على الشاشة
-                submitBtn.innerText = "تأكيد وإرسال الطلب عبر البريد";
-                submitBtn.disabled = false;
-            });
+        alert("تم تسجيل الدخول بنجاح أهلاً بك في متجر العطاوي!");
+        if (accountOverlay) accountOverlay.classList.remove("active");
+        updateAccountDisplay();
     });
 }
+
+if (registerButton) {
+    registerButton.addEventListener("click", () => {
+        const name = prompt("أدخل اسمك الكامل:");
+        const email = prompt("أدخل بريدك الإلكتروني:");
+        const phone = prompt("أدخل رقم هاتفك:");
+        const password = prompt("أنشئ كلمة مرور جديدة:");
+        
+        if (email && password) {
+            const userData = { name, email, phone, password };
+            localStorage.setItem("alatawiUser", JSON.stringify(userData));
+            alert("تم إنشاء الحساب بنجاح! يمكنك الآن تسجيل الدخول.");
+            updateAccountDisplay();
+        }
+    });
+}
+
+// دالة لتعبئة صفحة الحساب بالبيانات المحفوظة تلقائياً
+function updateAccountDisplay() {
+    const savedUser = JSON.parse(localStorage.getItem("alatawiUser"));
+    if (!savedUser) return;
+
+    // محاولة البحث عن العناصر في الصفحة وتعبئتها إن وجدت
+    const nameEl = document.querySelector(".account-name") || document.getElementById("userName");
+    const phoneEl = document.querySelector(".account-phone") || document.getElementById("userPhone");
+    const emailEl = document.querySelector(".account-email") || document.getElementById("userEmail");
+
+    if (nameEl && savedUser.name) nameEl.innerText = savedUser.name;
+    if (phoneEl && savedUser.phone) phoneEl.innerText = savedUser.phone;
+    if (emailEl && savedUser.email) emailEl.innerText = savedUser.email;
+}
+
+// تشغيل الدالة عند تحميل الصفحة
+document.addEventListener("DOMContentLoaded", () => {
+    updateAccountDisplay();
+});
