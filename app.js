@@ -460,6 +460,9 @@ const sortProducts =
 const noProducts =
     document.getElementById("noProducts");
 
+const smartPhonesContainer = document.getElementById('smartPhonesContainer');
+const accessoriesContainer = document.getElementById('accessoriesContainer');
+const carTechContainer = document.getElementById('carTechContainer');
 
 
 /* =====================================================
