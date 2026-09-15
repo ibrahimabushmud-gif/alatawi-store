@@ -451,7 +451,7 @@ if (checkoutForm) {
         submitBtn.innerText = "جاري إرسال الطلب...";
         submitBtn.disabled = true;
 
-        emailjs.send("service_ak9x10p", "template_frbxkcq", templateParams, "hZOtizBjJy0CcBmN")
+       emailjs.send("service_ak9x10p", "template_frbxkcq", templateParams, "hZOtizBjJy0CcBmN")
             .then((response) => {
                 alert("🎉 تم إرسال طلبك بنجاح! سنتواصل معك قريباً لتأكيد الشحن.");
                 cart = [];
@@ -463,7 +463,7 @@ if (checkoutForm) {
                 submitBtn.disabled = false;
             }, (error) => {
                 console.error("EmailJS Error details:", error);
-                alert("حدث خطأ أثناء إرسال البريد، يرجى المحاولة مرة أخرى.");
+                alert("خطأ EmailJS: " + JSON.stringify(error)); // هذا السطر سيطبع لنا السبب الحقيقي على الشاشة
                 submitBtn.innerText = "تأكيد وإرسال الطلب عبر البريد";
                 submitBtn.disabled = false;
             });
