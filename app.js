@@ -66,6 +66,47 @@ const products = [
     { id: 25, name: "كفر حماية شفاف مضاد للصدمات", category: "الكفرات", price: 59, oldPrice: 89, image: "clear_case.jpg", rating: 4.7, featured: true },
     { id: 26, name: "حماية شاشة زجاج مقاوم للكسر", category: "بكجات وحمايات", price: 39, oldPrice: 69, image: "screen_protector.jpg", rating: 4.7, featured: true },
     { id: 27, name: "حامل هواتف مغناطيسي للسيارة", category: "ملحقات السيارة", price: 79, oldPrice: 109, image: "car_holder.jpg", rating: 4.8, featured: true }
+       // =====================================================
+    // NEW PRODUCTS - 19 PRODUCTS
+    // =====================================================
+
+    { id: 28, name: "بكج الحماية المتكامل", category: "بكجات وحمايات", price: 25, image: "protection-pack.jpg", rating: 4.8, featured: true },
+
+    { id: 29, name: "كفر آيفون 17", category: "الكفرات", price: 15, image: "iphone17-case.jpg", rating: 4.8, featured: true },
+
+    { id: 30, name: "حماية الكاميرا", category: "بكجات وحمايات", price: 10, image: "camera-protector.jpg", rating: 4.7, featured: true },
+
+    { id: 31, name: "ستاند جوال مكتبي", category: "الاستاندات", price: 20, image: "phone-stand.jpg", rating: 4.8, featured: true },
+
+    { id: 32, name: "ساعة أبل (إصدار 1)", category: "الساعات الذكية", price: 199, image: "apple-watch.jpg", rating: 4.8, featured: true },
+
+    { id: 33, name: "ساعة أبل (إصدار 2)", category: "الساعات الذكية", price: 249, image: "apple-watch-2.jpg", rating: 4.9, featured: true },
+
+    { id: 34, name: "رينج لايت للتصوير", category: "الاستاندات", price: 35, image: "ring-light.jpg", rating: 4.7, featured: true },
+
+    { id: 35, name: "ستاند مانع للاهتزاز (جيمبال)", category: "الاستاندات", price: 120, image: "anti-shake-stand.jpg", rating: 4.8, featured: true },
+
+    { id: 36, name: "باور بانك أورايمو", category: "الشواحن والكيابل", price: 40, image: "oraimo-powerbank.jpg", rating: 4.8, featured: true },
+
+    { id: 37, name: "باور بانك أنكر", category: "الشواحن والكيابل", price: 60, image: "anker-powerbank.jpg", rating: 4.9, featured: true },
+
+    { id: 38, name: "شاحن سيارة يوجرين سريع", category: "ملحقات السيارة", price: 25, image: "ugreen-car-charger.jpg", rating: 4.8, featured: true },
+
+    { id: 39, name: "شاحن سيارة أنكر", category: "ملحقات السيارة", price: 30, image: "anker-car-charger.jpg", rating: 4.8, featured: true },
+
+    { id: 40, name: "شاحن جداري أبل أصلي", category: "الشواحن والكيابل", price: 35, image: "apple-wall-charger.jpg", rating: 4.9, featured: true },
+
+    { id: 41, name: "شاحن جداري راف باور", category: "الشواحن والكيابل", price: 45, image: "ravpower-wall-charger.jpg", rating: 4.8, featured: true },
+
+    { id: 42, name: "كيبل شحن سريع", category: "الشواحن والكيابل", price: 12, image: "charging-cable.jpg", rating: 4.7, featured: true },
+
+    { id: 43, name: "هاتف هواوي بورا", category: "الأجهزة الذكية", price: 899, image: "huawei-pura-phone.jpg", rating: 4.8, featured: true },
+
+    { id: 44, name: "هاتف سامسونج A37", category: "الأجهزة الذكية", price: 320, image: "samsung-a37.jpg", rating: 4.7, featured: true },
+
+    { id: 45, name: "هاتف سامسونج A07", category: "الأجهزة الذكية", price: 140, image: "samsung-a07.jpg", rating: 4.7, featured: true },
+
+    { id: 46, name: "هاتف هونور X9d", category: "الأجهزة الذكية", price: 280, image: "honor-x9d.jpg", rating: 4.8, featured: true }
 ];
 
 
