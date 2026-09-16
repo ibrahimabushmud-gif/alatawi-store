@@ -501,7 +501,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // استخدام مكتبة emailjs للإرسال (تأكد من معرف الخدمة والقالب لديك)
             // يمكنك تعديل service_id و template_id بما يناسب حسابك إذا لزم الأمر
-            emailjs.send("service_default", "template_default", templateParams)
+ emailjs.send(
+    "service_ak9x10p",
+    "template_frbxkcq",
+    templateParams
+)
                 .then((response) => {
                     alert("تم إرسال طلبك بنجاح! سنتواصل معك قريباً.");
                     document.getElementById("checkoutOverlay").classList.remove("active");
