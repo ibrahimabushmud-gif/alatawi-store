@@ -501,28 +501,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // استخدام مكتبة emailjs للإرسال (تأكد من معرف الخدمة والقالب لديك)
             // يمكنك تعديل service_id و template_id بما يناسب حسابك إذا لزم الأمر
- emailjs.send(
+emailjs.send(
     "service_ak9x10p",
     "template_frbxkcq",
     templateParams
 )
-                .then((response) => {
-                    alert("تم إرسال طلبك بنجاح! سنتواصل معك قريباً.");
-                    document.getElementById("checkoutOverlay").classList.remove("active");
-                    submitOrderButton.innerText = "🚀 إرسال الطلب الآن";
-                    submitOrderButton.disabled = false;
-                    
-                    // تفريغ السلة إن أردت
-                    if (typeof cart !== "undefined") {
-                        cart.length = 0;
-                        if (typeof updateCart === "function") updateCart();
-                    }
-                }, (error) => {
-                    // في حال حدث خطأ بالإرسال البريدي، كبديل احتياطي نطبع التفاصيل أو نبه المستخدم
-                    alert("حدث خطأ أثناء إرسال الطلب عبر البريد، يرجى المحاولة مرة أخرى.");
-                    submitOrderButton.innerText = "🚀 إرسال الطلب الآن";
-                    submitOrderButton.disabled = false;
-                });
+.then((response) => {
+    console.log("SUCCESS:", response);
+
+    alert("تم إرسال طلبك بنجاح! سنتواصل معك قريباً.");
+
+    document.getElementById("checkoutOverlay").classList.remove("active");
+
+    submitOrderButton.innerText = "🚀 إرسال الطلب الآن";
+    submitOrderButton.disabled = false;
+
+    cart.length = 0;
+    saveCart();
+    updateCart();
+
+}, (error) => {
+    console.error("EMAILJS ERROR:", error);
+
+    alert(
+        "حدث خطأ في إرسال الطلب:\n" +
+        error.text
+    );
+
+    submitOrderButton.innerText = "🚀 إرسال الطلب الآن";
+    submitOrderButton.disabled = false;
+});
         });
     }
 });
