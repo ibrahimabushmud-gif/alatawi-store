@@ -65,7 +65,7 @@ const products = [
     // Accessories
     { id: 25, name: "كفر حماية شفاف مضاد للصدمات", category: "الكفرات", price: 59, oldPrice: 89, image: "clear_case.jpg", rating: 4.7, featured: true },
     { id: 26, name: "حماية شاشة زجاج مقاوم للكسر", category: "بكجات وحمايات", price: 39, oldPrice: 69, image: "screen_protector.jpg", rating: 4.7, featured: true },
-    { id: 27, name: "حامل هواتف مغناطيسي للسيارة", category: "ملحقات السيارة", price: 79, oldPrice: 109, image: "car_holder.jpg", rating: 4.8, featured: true }
+    { id: 27, name: "حامل هواتف مغناطيسي للسيارة", category: "ملحقات السيارة", price: 79, oldPrice: 109, image: "car_holder.jpg", rating: 4.8, featured: true },
        // =====================================================
     // NEW PRODUCTS - 19 PRODUCTS
     // =====================================================
@@ -462,6 +462,15 @@ document.addEventListener("DOMContentLoaded", () => {
             smartPhonesContainer.scrollIntoView({ behavior: "smooth" });
         });
     }
+   // تشغيل روابط التصنيفات الموجودة في القائمة العلوية
+document.querySelectorAll("[data-category]").forEach(element => {
+    element.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const category = element.getAttribute("data-category");
+        filterByCategory(category);
+    });
+});
 });
 /* =====================================================
    FIX: CHECKOUT & ACCOUNT MODALS INTEGRATION
